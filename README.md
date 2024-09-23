@@ -4,6 +4,7 @@ following the tutorial here: https://www.youtube.com/watch?v=XSLm9PHnkxI&list=PL
 ## TODO
 
 - [ ] scaffold basic ui with mock data
+    - [ ] create scaffold for Search page, user page, shopping list
 - [ ] setup a DB
 - [ ] attach DB to UI
 - [ ] add authentication
