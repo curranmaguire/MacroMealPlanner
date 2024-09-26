@@ -3,10 +3,12 @@ following the tutorial here: https://www.youtube.com/watch?v=XSLm9PHnkxI&list=PL
 
 ## TODO
 
-- [*] scaffold basic ui with mock data
-    - [ ] create scaffold for Search page, user page, shopping list
-    - [ ] implement flexbox styling
-    - [ ] manage data handling down component tree
+- [ ] scaffold basic ui with mock data
+    - [x] create scaffold for Search page, user page, shopping list
+    - [x] implement flexbox styling
+    - [x] manage data handling down component tree
+    - [x] plan hooks
+    - [ ] implement hooks
 - [ ] setup a DB
 - [ ] attach DB to UI
 - [ ] add authentication
