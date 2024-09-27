@@ -6,57 +6,54 @@ import FormControl from 'react-bootstrap/esm/FormControl';
 import UserPage from './pages/UserPage';
 import RecipePage from './pages/RecipePage';
 import ShoppingListPage from './pages/ShoppingListPage';
+import LandingPage from './pages/LandingPage';
+import Footer from './components/Footer/Footer';
+import Search from './components/Search/search';
+import SearchPage from './pages/SearchPage';
 
 
 function App() {
   const [search, setSearch] = React.useState<string>("")
-  const [page, setPage] = React.useState<number>(2)
-  // page index: 0 = recipes, 1 = user, 2 = shopping list
+  const [page, setPage] = React.useState<number>(0)
+  // page index: 0 = Landing, 1 = user, 2 = shopping list, 3 = recipe, 4 = search
     
 
     const onClick = (e:  React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-      setPage(0)
-      console.log(page)
+      ////set the page to the search and then use handle search to feed the search into search page
+      setPage(4)
+
     }
     const handleSearch = (e:any) => {
       e.preventDefault()
       setSearch(e.target.value)
     };
-  if (page === 0) //// recipes
-    {
+
+    function handlePage(page: number) {
+    switch(page){
+      case 0:
+        return  <LandingPage />
+      case 1:
+        return <UserPage />
+      case 2:
+        return <ShoppingListPage />
+      case 3:
+        return <RecipePage />
+      case 4:
+        return <SearchPage searchTerm={search} setSearchTerm={setSearch}/>
+      default:
+        return <LandingPage />
+      
+    }}
     return (
       <div className="App">
         <NavBar setPage={setPage} onClick={onClick} handleSearch={handleSearch} search={search}/>
-        <RecipePage />
+        {handlePage(page)}
+        <Footer />
       </div>
     )
-  } else if (page === 1) //// user
-    {
-    return (
-      <div className="App">
-        <NavBar setPage={setPage} onClick={onClick} handleSearch={handleSearch} search={search}/>
-        <UserPage />
-      </div>
-    )
-  } else if (page === 2) //// shopping list
-  {
-    return (
-      <div className="App">
-        <NavBar setPage={setPage} onClick={onClick} handleSearch={handleSearch} search={search}/>
-        <ShoppingListPage />
-      </div>
-    )
-  }
-  return (
     
-    <div className="App">
-        <NavBar setPage={setPage} onClick={onClick} handleSearch={handleSearch} search={search}/>
+  }
 
-
-      <CardList />
-    </div>
-  );
-}
 
 export default App;
 

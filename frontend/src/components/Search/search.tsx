@@ -22,7 +22,7 @@ const Search : React.FC<Props> = ({search, handleSearch, onClick}: Props):JSX.El
           value={search ?? ''}
           onChange={(e) => handleSearch(e)}
         />
-        <Button type="submit" variant="outline-success" onClick={onClick} style={{color: 'orange', borderColor: 'orange'}}>
+        <Button type="submit" variant='primary' onClick={onClick}  >
           Search
         </Button>
       </Form>
