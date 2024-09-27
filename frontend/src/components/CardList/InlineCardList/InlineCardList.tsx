@@ -16,10 +16,10 @@ interface CardListProps {
 const InlineCardList: React.FC<CardListProps> = ({ cards }) => {
   return (
     <Container>
-      <Row xs={1} md={3} className="g-4">
+      <Row xs={1} md={3} className="g-4 bg-dark">
         {cards.map((card) => (
           <Col key={card.id}>
-            <Card>
+            <Card bg='dark' text='white'>
               <Card.Img variant="top" src={card.imageSrc} alt={card.title} />
               <Card.Body>
                 <Card.Title>{card.title}</Card.Title>
