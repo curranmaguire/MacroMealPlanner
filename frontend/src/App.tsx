@@ -45,7 +45,7 @@ function App() {
       
     }}
     return (
-      <div className="App">
+      <div className="App bg-dark text-light" >
         <NavBar setPage={setPage} onClick={onClick} handleSearch={handleSearch} search={search}/>
         {handlePage(page)}
         <Footer />
