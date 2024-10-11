@@ -1,23 +1,46 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Search from '../components/Search/search'
 import InlineCardList from '../components/CardList/InlineCardList/InlineCardList'
 import { Container, Row } from 'react-bootstrap'
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 type Props = {}
 
-const LandingPage = (props: Props) => {
+const LandingPage: React.FC<Props> = () => {
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const [searchTerm, setSearchTerm] = useState(searchParams.get('query') || '');
+
+  useEffect(() => {
+    const query = searchParams.get('query');
+    if (query) {
+      setSearchTerm(query);
+    }
+  }, [searchParams]);
+
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchTerm.trim()) {
+      navigate(`/search?query=${encodeURIComponent(searchTerm)}`);
+    }
+  };
+
   return (
     <>
-    <Container className=''>
-    <div className="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-dark">
-      <div className="col-md-5 p-lg-5 mx-auto my-5">
-        <h1 className="display-4 font-weight-normal">Punny headline</h1>
-        <p className="lead font-weight-normal">And an even wittier subheading to boot. Jumpstart your marketing efforts with this example based on Apple's marketing pages.</p>
-        <Search onClick={() => {}} handleSearch={() => {}} search={''}/>
-      </div>
-      <div className="product-device box-shadow d-none d-md-block"></div>
-      <div className="product-device product-device-2 box-shadow d-none d-md-block"></div>
-    </div>
+      <Container className=''>
+        <div className="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-dark">
+          <div className="col-md-5 p-lg-5 mx-auto my-5">
+            <h1 className="display-4 font-weight-normal">Punny headline</h1>
+            <p className="lead font-weight-normal">And an even wittier subheading to boot. Jumpstart your marketing efforts with this example based on Apple's marketing pages.</p>
+            <Search onClick={handleSearchSubmit} handleSearch={handleSearch} search={searchTerm}/>
+          </div>
+          <div className="product-device box-shadow d-none d-md-block"></div>
+          <div className="product-device product-device-2 box-shadow d-none d-md-block"></div>
+        </div>
 
         <div className=" bg-dark">
           <div className="card flex-md-row mb-4 box-shadow h-md-250 bg-dark text-white">

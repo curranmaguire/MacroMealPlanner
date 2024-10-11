@@ -26,7 +26,7 @@ const NavBar = ({ handleSearch, search }: Props) => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link as={Link} to="/recipe" className="mx-2">Recipes</Nav.Link>
+            <Nav.Link as={Link} to="/search" className="mx-2">Recipes</Nav.Link>
             <Nav.Link as={Link} to="/user" className="mx-2">User Page</Nav.Link>
             <Nav.Link as={Link} to="/shopping-list" className="mx-2">Shopping List</Nav.Link>
           </Nav>

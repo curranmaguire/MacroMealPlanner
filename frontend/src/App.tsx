@@ -26,6 +26,7 @@ function App() {
           <Route path="/shopping-list" element={<ShoppingListPage />} />
           <Route path="/recipe" element={<RecipePage />} />
           <Route path="/search" element={<SearchPage />} />
+          <Route path="/search/:query" element={<SearchPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
         <Footer />

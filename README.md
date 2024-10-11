@@ -18,13 +18,12 @@ following the tutorial here: https://www.youtube.com/watch?v=XSLm9PHnkxI&list=PL
 
 - [x] scaffold basic ui with mock data
     - [x] create scaffold for Search page, user page, shopping list
-    - [x] implement flexbox styling
-    - [x] manage data handling down component tree
-    - [x] plan hooks
-    - [ ] implement hooks
-        - [x] useState
-        - [X] useContext
+- [ ] add the ingredients tally to the recipe cards using filter
+- [ ] add macro bar to the recipe cards that shows what is included in each recipe
+- [ ] manage search api call
+- [ ] manage user login api call
 - [x] setup a DB
+- [ ] create mock data in DB
 - [ ] attach DB to UI
 - [ ] add authentication
 - [ ] add uploading recipes, users, user data, ratings
