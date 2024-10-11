@@ -11,6 +11,12 @@ export interface Recipe {
   img: string;
 }
 
+interface FilterObject {
+  searchTerm: string;
+  matchedRecipes: Recipe[];
+  unmatchedRecipes: Recipe[];
+}
+
 // Mock data for search results
 const mockRecipes: Recipe[] = [
   { id: 1, title: 'Chocolate Chip Cookies', description: 'Classic homemade cookies', img: '' },
@@ -40,11 +46,22 @@ const SearchPage: React.FC = () => {
   };
 
   const filterRecipes = (query: string) => {
-    const filtered = mockRecipes.filter(recipe =>
+    const matched = mockRecipes.filter(recipe =>
       recipe.title.toLowerCase().includes(query.toLowerCase()) ||
       recipe.description.toLowerCase().includes(query.toLowerCase())
     );
-    setFilteredRecipes(filtered);
+    
+    const unmatched = mockRecipes.filter(recipe => !matched.includes(recipe));
+    
+    const filterObject: FilterObject = {
+      searchTerm: query,
+      matchedRecipes: matched,
+      unmatchedRecipes: unmatched
+    };
+    
+    console.log('Filter Object:', filterObject);
+    
+    setFilteredRecipes(matched);
   };
 
   const toggleFilter = () => {
