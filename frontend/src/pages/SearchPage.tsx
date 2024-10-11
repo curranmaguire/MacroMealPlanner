@@ -1,20 +1,14 @@
-import React, { useState } from 'react';
-import { Container, Row, Col, Form, Button, Card } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import IngredientsFilter from '../components/OffCanvas/Filter';
 import IngredientCard from '../components/card/IngredientCard';
 
-interface Recipe {
+export interface Recipe {
   id: number;
   title: string;
   description: string;
   img: string;
-}
-
-export type {Recipe}
-
-type props = {
-    searchTerm: string
-    setSearchTerm: (searchTerm: string) => void
 }
 
 // Mock data for search results
@@ -25,13 +19,32 @@ const mockRecipes: Recipe[] = [
   { id: 4, title: 'Chicken Alfredo', description: 'Creamy pasta dish', img: '' },
 ];
 
-const SearchPage: React.FC<props> = ({searchTerm, setSearchTerm}: props) => {
+const SearchPage: React.FC = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchTerm, setSearchTerm] = useState(searchParams.get('query') || '');
   const [isFilterHidden, setIsFilterHidden] = useState(true);
+  const [filteredRecipes, setFilteredRecipes] = useState<Recipe[]>(mockRecipes);
+
+  useEffect(() => {
+    const query = searchParams.get('query');
+    if (query) {
+      setSearchTerm(query);
+      filterRecipes(query);
+    }
+  }, [searchParams]);
 
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Filter mock recipes based on search term
-    
+    setSearchParams({ query: searchTerm });
+    filterRecipes(searchTerm);
+  };
+
+  const filterRecipes = (query: string) => {
+    const filtered = mockRecipes.filter(recipe =>
+      recipe.title.toLowerCase().includes(query.toLowerCase()) ||
+      recipe.description.toLowerCase().includes(query.toLowerCase())
+    );
+    setFilteredRecipes(filtered);
   };
 
   const toggleFilter = () => {
@@ -64,11 +77,11 @@ const SearchPage: React.FC<props> = ({searchTerm, setSearchTerm}: props) => {
         </Col>
       </Row>
       <Row>
-        {mockRecipes.map((recipe: Recipe) => (
+        {filteredRecipes.map((recipe: Recipe) => (
           <IngredientCard key={recipe.id} Recipe={recipe} />
         ))}
       </Row>
-      {mockRecipes.length === 0 && searchTerm && (
+      {filteredRecipes.length === 0 && searchTerm && (
         <p className="text-center">No results found. Try a different search term.</p>
       )}
       <IngredientsFilter Hidden={isFilterHidden} toggle={toggleFilter}/>

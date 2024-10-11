@@ -1,58 +1,55 @@
-import React from 'react'
+import React from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
 
-type Props = {}
-
-const Footer = (props: Props) => {
+const Footer: React.FC = () => {
   return (
-    <>
-    <footer className="container py-5">
-      <div className="row">
-        <div className="col-12 col-md">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="d-block mb-2"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
-          <small className="d-block mb-3 text-secondary fw-light">© 2017-2018</small>
-        </div>
-        <div className="col-6 col-md">
-          <h5>Features</h5>
-          <ul className="list-unstyled text-small text-secondary">
-            <li><a className="text-secondary fw-light" href="#">Cool stuff</a></li>
-            <li><a className="text-secondary fw-light" href="#">Random feature</a></li>
-            <li><a className="text-secondary fw-light" href="#">Team feature</a></li>
-            <li><a className="text-secondary fw-light" href="#">Stuff for developers</a></li>
-            <li><a className="text-secondary fw-light" href="#">Another one</a></li>
-            <li><a className="text-secondary fw-light" href="#">Last time</a></li>
-          </ul>
-        </div>
-        <div className="col-6 col-md">
-          <h5>Resources</h5>
-          <ul className="list-unstyled text-small text-secondary">
-            <li><a className="text-secondary fw-light" href="#">Resource</a></li>
-            <li><a className="text-secondary fw-light" href="#">Resource name</a></li>
-            <li><a className="text-secondary fw-light" href="#">Another resource</a></li>
-            <li><a className="text-secondary fw-light" href="#">Final resource</a></li>
-          </ul>
-        </div>
-        <div className="col-6 col-md">
-          <h5>Resources</h5>
-          <ul className="list-unstyled text-small text-secondary">
-            <li><a className="text-secondary fw-light" href="#">Business</a></li>
-            <li><a className="text-secondary fw-light" href="#">Education</a></li>
-            <li><a className="text-secondary fw-light" href="#">Government</a></li>
-            <li><a className="text-secondary fw-light" href="#">Gaming</a></li>
-          </ul>
-        </div>
-        <div className="col-6 col-md">
-          <h5>About</h5>
-          <ul className="list-unstyled text-small text-secondary">
-            <li><a className="text-secondary fw-light" href="#">Team</a></li>
-            <li><a className="text-secondary fw-light" href="#">Locations</a></li>
-            <li><a className="text-secondary fw-light" href="#">Privacy</a></li>
-            <li><a className="text-secondary fw-light" href="#">Terms</a></li>
-          </ul>
-        </div>
-      </div>
+    <footer className="bg-dark text-light py-4 mt-5">
+      <Container>
+        <Row>
+          <Col md={4}>
+            <h5>About Us</h5>
+            <p>FitCook is your go-to platform for healthy and delicious recipes.</p>
+          </Col>
+          <Col md={4}>
+            <h5>Quick Links</h5>
+            <ul className="list-unstyled">
+              <li><a href="/" className="text-light">Home</a></li>
+              <li><a href="/recipes" className="text-light">Recipes</a></li>
+              <li><a href="/about" className="text-light">About</a></li>
+              <li><a href="/contact" className="text-light">Contact</a></li>
+            </ul>
+          </Col>
+          <Col md={4}>
+            <h5>Follow Us</h5>
+            <div className="d-flex">
+              <a href="#" className="text-light me-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-facebook">
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                </svg>
+              </a>
+              <a href="#" className="text-light me-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-twitter">
+                  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                </svg>
+              </a>
+              <a href="#" className="text-light">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-instagram">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+              </a>
+            </div>
+          </Col>
+        </Row>
+        <Row className="mt-3">
+          <Col className="text-center">
+            <p>&copy; 2023 FitCook. All rights reserved.</p>
+          </Col>
+        </Row>
+      </Container>
     </footer>
-    </>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

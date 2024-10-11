@@ -11,7 +11,10 @@ following the tutorial here: https://www.youtube.com/watch?v=XSLm9PHnkxI&list=PL
         - [x] useRef (basically just used to reference a item in the dom. can be used to focus items)
         - [ ] useCallback (for optimising rendering code so won't go over yet) useMemo (optimizing results of a function by caching unchanged values)
         - [x] useReducer (useState but with ability to alter values centrally (for example can be used to clean or validate a users input))
-        - [x] useContext
+        - [ ] useContext
+    - [ ] React Router
+        - [ ] add routes to the pages used
+
 
 - [x] scaffold basic ui with mock data
     - [x] create scaffold for Search page, user page, shopping list
@@ -19,6 +22,8 @@ following the tutorial here: https://www.youtube.com/watch?v=XSLm9PHnkxI&list=PL
     - [x] manage data handling down component tree
     - [x] plan hooks
     - [ ] implement hooks
+        - [x] useState
+        - [X] useContext
 - [x] setup a DB
 - [ ] attach DB to UI
 - [ ] add authentication
