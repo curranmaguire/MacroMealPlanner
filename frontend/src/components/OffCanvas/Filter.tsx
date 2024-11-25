@@ -5,10 +5,10 @@ type Props = {
     Hidden: boolean;
     toggle: () => void;
     onFilterChange?: (includeIngredients: string[], excludeIngredients: string[]) => void;
-    setFilters: () => void;
+
 }
 
-const IngredientsFilter: React.FC<Props> = ({ Hidden, toggle, onFilterChange, setFilters }: Props) => {
+const IngredientsFilter: React.FC<Props> = ({ Hidden, toggle, onFilterChange }: Props) => {
   const [includeIngredients, setIncludeIngredients] = useState<string[]>([]);
   const [excludeIngredients, setExcludeIngredients] = useState<string[]>([]);
   const [newIncludeIngredient, setNewIncludeIngredient] = useState('');
